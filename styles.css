@@ -1,6 +1,6 @@
 html {
-    /* Photo credits: Kiwihug - https://unsplash.com/photos/MS9Tnh3if1o */
-    background-image: url(images/canvas.jpg);
+    /* Photo by FWStudio from Pexels: https://www.pexels.com/photo/brown-wooden-surface-129733/ */
+    background: url(images/wood1.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 200px;
     font-family: sans-serif;
     font-family: 'lobster', sans-serif;
 }
@@ -39,7 +39,7 @@ button {
     background-color: #b7161e;
     padding: 0 80px;
     border-radius: 48px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 1) 0px 30px 60px -30px, rgba(0, 0, 0, .8) 0px 0px 8px 0px inset;
+    box-shadow: rgba(0, 0, 0, .5) 0px 50px 100px -20px, rgba(0, 0, 0, 1) 0px 30px 60px -30px, rgba(0, 0, 0, 1) 0px 0px 8px 0px inset;
 }
 
 .header {
