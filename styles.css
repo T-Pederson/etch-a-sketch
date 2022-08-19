@@ -35,7 +35,7 @@ span {
 button {
     background: #f8f8ff;
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 12px 0;
     box-shadow: rgba(0, 0, 0, .25) 0px 5px 15px;
     color: #222;
@@ -75,7 +75,7 @@ button {
     flex-direction: column;
     font-size: 20px;
     font-weight: 600;
-    width: 200px;
+    width: 150px;
     gap: 4px;
 }
 
@@ -98,14 +98,6 @@ button {
     grid-template-rows: repeat(16, 1fr);
 }
 
-.pixel {
-    
-}
-
-.slideContainer {
-    width: 100%;
-}
-
 .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -113,14 +105,14 @@ button {
     border-radius: 6px;  
     background: #d3d3d3;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.6;
     -webkit-transition: .2s;
     transition: opacity .2s;
     direction: rtl;
 }
 
 .slider:hover {
-    opacity: .85;
+    opacity: .8;
 }
 
 .slider::-webkit-slider-thumb {

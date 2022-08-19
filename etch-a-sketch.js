@@ -55,6 +55,10 @@ function draw(pixel) {
     if (document.getElementById("draw").classList.value === "buttonOn") {
         pixel.target.style.background = "black";
     }
+    // Else if rainbow is selected, turn pixels a random color
+    else if (document.getElementById("rainbow").classList.value === "buttonOn") {
+        pixel.target.style.background = randomColor();
+    }
     // Else if erase is selected, turn pixels white
     else if (document.getElementById("erase").classList.value === "buttonOn") {
         pixel.target.style.background = "white";
@@ -66,7 +70,7 @@ function draw(pixel) {
 function drawModeOn() {
     const pixels = document.querySelectorAll(".pixel");
     for (pixel of pixels) {
-        pixel.addEventListener("mousemove", draw);
+        pixel.addEventListener("mouseover", draw);
     }
 }
 
@@ -75,7 +79,7 @@ function drawModeOn() {
 function drawModeOff() {
     const pixels = document.querySelectorAll(".pixel");
     for (pixel of pixels) {
-        pixel.removeEventListener("mousemove", draw);
+        pixel.removeEventListener("mouseover", draw);
     }
 }
 
@@ -83,8 +87,9 @@ function drawModeOff() {
 // Turn on the draw mode that the user clicked on
 function switchDrawMode(button) {
     // Turn off other draw mode
-    document.getElementById("draw").classList.remove("buttonOn");
-    document.getElementById("erase").classList.remove("buttonOn");
+    for (eachButton of document.querySelectorAll("button")) {
+        eachButton.classList.remove("buttonOn");
+    }
 
     // Turn on selected draw mode
     document.getElementById(button).classList.add("buttonOn");
@@ -94,6 +99,20 @@ function switchDrawMode(button) {
 // Clear grid and switch to draw mode
 function clearGrid() {
     generateGrid(document.querySelector(".slider").value);
-    document.getElementById("erase").classList.remove("buttonOn");
-    document.getElementById("draw").classList.add("buttonOn");
+}
+
+
+// Generate random RGB color for the rainbow button
+function randomColor() {
+    let r = randNum();
+    let g = randNum();
+    let b = randNum();
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+
+// Generate random number 0-255
+function randNum() {
+    return Math.floor(Math.random() * 256);
 }

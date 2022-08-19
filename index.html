@@ -22,7 +22,7 @@
 
         <div class="optionsContainer">
             <div class="penSizeContainer">
-                <span>Pen Size</span>
+                <span>Pixel Size</span>
                 <div class="slidecontainer">
                     <input type="range" min="8" max="64" value="36" class="slider" onchange="generateGrid(this.value)">
                 </div>
@@ -32,6 +32,7 @@
                 </div>
             </div>
             <button id="draw" class="buttonOn" onclick="switchDrawMode(this.id)">Draw</button>
+            <button id="rainbow" onclick="switchDrawMode(this.id)">Rainbow</button>
             <button id="erase" onclick="switchDrawMode(this.id)">Erase</button>
             <button id="clear">Clear</button>
         </div>
