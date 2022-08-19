@@ -4,9 +4,13 @@ const sketchPad = document.querySelector(".sketchPad");
 generateGrid(originalSliderValue);
 
 
-// Enable ability to draw only if mouse is held down
+// Allow user to draw only if mouse is held down
 document.querySelector("html").addEventListener("mousedown", drawModeOn);
 document.querySelector("html").addEventListener("mouseup", drawModeOff);
+
+
+// Make clear button work
+document.getElementById("clear").addEventListener("click", clearGrid);
 
 
 // Create grid of div's based on sliderValue
@@ -42,18 +46,19 @@ function addPixels(sketchPad, sliderValue) {
     // Make sketch pad fit all pixels in a grid
     sketchPad.style.gridTemplateColumns = `repeat(${sliderValue}, 1fr)`;
     sketchPad.style.gridTemplateRows = `repeat(${sliderValue}, 1fr)`;
-
-    return;
 }
 
 
 // Add color to pixel based on what option is selected
 function draw(pixel) {
     // If draw is selected, turn pixels black
-    pixel.target.style.background = "black";
-
+    if (document.getElementById("draw").classList.value === "buttonOn") {
+        pixel.target.style.background = "black";
+    }
     // Else if erase is selected, turn pixels white
-    // pixel.target.style.background = "white";
+    else if (document.getElementById("erase").classList.value === "buttonOn") {
+        pixel.target.style.background = "white";
+    }
 }
 
 
@@ -72,4 +77,23 @@ function drawModeOff() {
     for (pixel of pixels) {
         pixel.removeEventListener("mousemove", draw);
     }
+}
+
+
+// Turn on the draw mode that the user clicked on
+function switchDrawMode(button) {
+    // Turn off other draw mode
+    document.getElementById("draw").classList.remove("buttonOn");
+    document.getElementById("erase").classList.remove("buttonOn");
+
+    // Turn on selected draw mode
+    document.getElementById(button).classList.add("buttonOn");
+}
+
+
+// Clear grid and switch to draw mode
+function clearGrid() {
+    generateGrid(document.querySelector(".slider").value);
+    document.getElementById("erase").classList.remove("buttonOn");
+    document.getElementById("draw").classList.add("buttonOn");
 }
