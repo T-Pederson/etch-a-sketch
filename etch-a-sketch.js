@@ -38,5 +38,20 @@ function addPixels(sketchPad, sliderValue) {
     sketchPad.style.gridTemplateColumns = `repeat(${sliderValue}, 1fr)`;
     sketchPad.style.gridTemplateRows = `repeat(${sliderValue}, 1fr)`;
 
+    // Add event listeners to pixels to enable drawing
+    const pixels = document.querySelectorAll(".pixel");
+    for (pixel of pixels) {
+        pixel.addEventListener("mouseover", draw);
+    }
+
     return;
+}
+
+
+function draw(pixel) {
+    // If draw is selected, turn pixels black
+    pixel.target.style.background = "black";
+
+    // Else if erase is selected, turn pixels white
+    // pixel.target.style.background = "white";
 }
