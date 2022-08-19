@@ -4,6 +4,11 @@ const sketchPad = document.querySelector(".sketchPad");
 generateGrid(originalSliderValue);
 
 
+// Enable ability to draw only if mouse is held down
+document.querySelector("html").addEventListener("mousedown", drawModeOn);
+document.querySelector("html").addEventListener("mouseup", drawModeOff);
+
+
 // Create grid of div's based on sliderValue
 function generateGrid(sliderValue) {
     // Delete existing grid
@@ -38,20 +43,33 @@ function addPixels(sketchPad, sliderValue) {
     sketchPad.style.gridTemplateColumns = `repeat(${sliderValue}, 1fr)`;
     sketchPad.style.gridTemplateRows = `repeat(${sliderValue}, 1fr)`;
 
-    // Add event listeners to pixels to enable drawing
-    const pixels = document.querySelectorAll(".pixel");
-    for (pixel of pixels) {
-        pixel.addEventListener("mouseover", draw);
-    }
-
     return;
 }
 
 
+// Add color to pixel based on what option is selected
 function draw(pixel) {
     // If draw is selected, turn pixels black
     pixel.target.style.background = "black";
 
     // Else if erase is selected, turn pixels white
     // pixel.target.style.background = "white";
+}
+
+
+// Turn on drawing ability when mouse click is held down
+function drawModeOn() {
+    const pixels = document.querySelectorAll(".pixel");
+    for (pixel of pixels) {
+        pixel.addEventListener("mousemove", draw);
+    }
+}
+
+
+// Turn off drawing ability when mouse click is released
+function drawModeOff() {
+    const pixels = document.querySelectorAll(".pixel");
+    for (pixel of pixels) {
+        pixel.removeEventListener("mousemove", draw);
+    }
 }

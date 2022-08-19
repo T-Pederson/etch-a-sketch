@@ -1,3 +1,9 @@
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
 html {
     /* Photo by FWStudio from Pexels: https://www.pexels.com/photo/brown-wooden-surface-129733/ */
     background: url(images/wood.jpg) no-repeat center center fixed;
@@ -28,11 +34,16 @@ button {
     background: #f8f8ff;
     border: 1px solid gray;
     border-radius: 5px;
-    padding: 12px 20px;
+    padding: 12px 0;
     box-shadow: rgba(0, 0, 0, .25) 0px 5px 15px;
     color: #222;
     font-size: 16px;
     font-weight: 600;
+    width: 80px;
+}
+
+.buttonOn {
+    background: #999;
 }
 
 .container {
