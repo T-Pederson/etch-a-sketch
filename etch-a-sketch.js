@@ -8,16 +8,16 @@ generateGrid(originalSliderValue);
 document.querySelector("html").addEventListener("mousedown", drawModeOn);
 document.querySelector("html").addEventListener("mouseup", drawModeOff);
 
-
-// Make clear button work
-document.getElementById("clear").addEventListener("click", clearGrid);
+// Make clear button look like it's being pressed
+document.getElementById("clear").addEventListener("mousedown", clearPress);
+document.getElementById("clear").addEventListener("mouseup", clearRelease);
+document.getElementById("clear").addEventListener("mouseleave", clearRelease);
 
 
 // Create grid of div's based on sliderValue
 function generateGrid(sliderValue) {
     // Delete existing grid
     removePixels(sketchPad);
-
     // Create div's for new grid based on slider value and update sketch pad to fit them
     addPixels(sketchPad, sliderValue);
 }
@@ -35,14 +35,12 @@ function removePixels(sketchPad) {
 function addPixels(sketchPad, sliderValue) {
     // Find grid size based on slider value
     let sliderValueSquared = sliderValue * sliderValue;
-
     // Add pixels to the sketch pad according to slider value
     for (let i = 0; i < sliderValueSquared; i++) {
         const pixel = document.createElement("div");
         pixel.classList.add("pixel");
         sketchPad.appendChild(pixel);
     }
-
     // Make sketch pad fit all pixels in a grid
     sketchPad.style.gridTemplateColumns = `repeat(${sliderValue}, 1fr)`;
     sketchPad.style.gridTemplateRows = `repeat(${sliderValue}, 1fr)`;
@@ -90,7 +88,6 @@ function switchDrawMode(button) {
     for (eachButton of document.querySelectorAll("button")) {
         eachButton.classList.remove("buttonOn");
     }
-
     // Turn on selected draw mode
     document.getElementById(button).classList.add("buttonOn");
 }
@@ -107,7 +104,6 @@ function randomColor() {
     let r = randNum();
     let g = randNum();
     let b = randNum();
-
     return `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -115,4 +111,16 @@ function randomColor() {
 // Generate random number 0-255
 function randNum() {
     return Math.floor(Math.random() * 256);
+}
+
+
+// Make clear button look like it's being pressed
+function clearPress() {
+    document.getElementById("clear").classList.add("buttonOn");
+}
+
+
+// Put clear button back to normal
+function clearRelease() {
+    document.getElementById("clear").classList.remove("buttonOn");
 }
