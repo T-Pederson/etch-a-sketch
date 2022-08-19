@@ -81,8 +81,8 @@ button {
     box-shadow: rgba(0, 0, 0, .8) 0px 5px 15px;
     background-color: white;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
 }
 
 .pixel {
